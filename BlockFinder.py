@@ -18,6 +18,7 @@ class BlockFinder(MinecraftGenerator):
         print ("\nFUNCTION: BlockFinder __init__")
         # instantiate parent
         MinecraftGenerator.__init__(self)
+
         self.corners = []
         self.set_radius(SEARCH_RADIUS)
         self.gold=41
@@ -164,5 +165,8 @@ class BlockFinder(MinecraftGenerator):
         print ("delta_x == " + str(self.corners[index]['delta_x']))
         print ("delta_y == " + str(self.corners[index]['delta_y']))
         print ("delta_z == " + str(self.corners[index]['delta_z']))
+
+    def reset(self,MinecraftGenerator):
+        #TODO reset members for new build.
 
 #End of BlockFinder class.

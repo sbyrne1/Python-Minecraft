@@ -16,6 +16,7 @@ class Builder(BlockFinder):
     """
     def __init__(self):
         print ("\nFUNCTION: Builder __init__")
+        #instantiate parent.
         BlockFinder.__init__(self)
         self.set_materials()
         self.set_dims(10,30,10)
@@ -234,4 +235,7 @@ class Builder(BlockFinder):
                     block_y=self.g_loc[1]+self.delta_y*y
                     block_z=self.g_loc[2]+self.delta_z*z
                     self.mc.setBlock(block_x,block_y,block_z,self.map3d[x][y][z])
+
+    def reset (self, BlockFinder):
+        #TODO reset members for new build.
 #End of builder class.

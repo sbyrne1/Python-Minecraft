@@ -11,9 +11,9 @@ from mcpi.minecraft import Minecraft
     The MinecraftGenerator:
         Generates structures in Minecraft.
 
-        MinecraftGenerator is a base class:
-            BlockFinder derives from MinecraftGenerator.
-            Builder derives from BlockFinder.
+        MinecraftGenerator is a parent class:
+            BlockFinder child of MinecraftGenerator.
+            Builder child of BlockFinder.
 """
 class MinecraftGenerator:
     """
@@ -46,6 +46,9 @@ class MinecraftGenerator:
 
         # returns players [x,y,z] coordinates
         return [self.px,self.py,self.pz]
+
+    def reset(self):
+        #TODO reset required members for new building.
 
 #End of MinecraftGenerator Class.
 
