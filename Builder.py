@@ -6,10 +6,11 @@ HOLLOW_CUBE_SETTING = 3
 
 """
     Builder:
-        Derived from BlockFinder.
+        Derived from BlockFinder, whose parent is MinecraftGenerator.
 
 """
 class Builder(BlockFinder):
+    #TODO: work on defining attributes so the class has a state.
     """
     Attributes:
 

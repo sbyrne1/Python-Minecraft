@@ -6,6 +6,7 @@ SEARCH_RADIUS = 2
 """
     BlockFinder:
         Derived from MinecraftGenerator.
+        Child is Builder.
 
 """
 class BlockFinder(MinecraftGenerator):
