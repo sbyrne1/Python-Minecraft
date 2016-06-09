@@ -1,5 +1,5 @@
 from tkinter import *
-import Builder
+from Builder import *
 
 class App:
     def __init__(self,master):
@@ -43,9 +43,10 @@ class App:
     def btn_build(self):
         print ("\nGUI FUNCTION: btn_build")
         #TODO is 'index' a member of room_gen_gui_002???
-        index = 0 #TODO 'index' doesn't seem to be a variable, does the user interact with it?
-        self.builder.set_build_mode(index)
-        mode = self.builder.get_mode(index) #NOTE may not need to pass index to get_mode.
+        #index defines which corner to build off of. THIS IS TEMPORARY. Eventually a selection
+        # box will be included in the GUI to allow the user to select a specific index
+        index = 0
+        mode = self.builder.set_build_mode(index)
         if (mode != "default"):
             self.builder.set_dims(self.x_var.get(),self.y_var.get(),self.z_var.get())
             self.builder.set_materials(57,35,20,5,45,246)

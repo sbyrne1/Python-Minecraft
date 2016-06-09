@@ -1,4 +1,4 @@
-import BlockFinder
+from BlockFinder import *
 
 LINE_SETTING = 1
 PLANE_SETTING = 2
@@ -21,6 +21,8 @@ class Builder(BlockFinder):
         BlockFinder.__init__(self)
         self.set_materials()
         self.set_dims(10,30,10)
+        self.mode="default"
+        self.g_loc=[]
         #TODO indentify class attributes.
 
     def set_materials(self,a=1,b=1,c=1,d=1,e=1,f=1):
@@ -51,8 +53,9 @@ class Builder(BlockFinder):
             mode="plane"
         elif iron_found==HOLLOW_CUBE_SETTING:
             mode="hollow_cube"
-        self.corners[index]['mode']=mode
-        print ("mode == " + self.corners[index]['mode'])
+        self.mode=mode
+        print ("mode == " + mode)
+        return mode
 
     def builder(self,index):
         print ("\nFUNCTION: builder, index == " + str(index))
@@ -60,19 +63,17 @@ class Builder(BlockFinder):
         self.delta_x = self.corners[index]['delta_x']
         self.delta_y = self.corners[index]['delta_y']
         self.delta_z = self.corners[index]['delta_z']
-        mode = self.corners[index]['mode']
         self.to_x = self.g_loc[0]
         self.to_y = self.g_loc[1]
         self.to_z = self.g_loc[2]
-        if mode=="line":
-            self.build_line(index)
-        elif mode=="plane":
-            self.build_plane(index)
-        elif mode=="hollow_cube":
-            self.build_hollow_cube(index)
+        if self.mode=="line":
+            self.build_line()
+        elif self.mode=="plane":
+            self.build_plane()
+        elif self.mode=="hollow_cube":
+            self.build_hollow_cube()
 
-    def build_line(self, index):#??? Uses mc instance.
-        #TODO indentify why 'index' is an argument, it is unused.
+    def build_line(self):#??? Uses mc instance.
         print ("\nFUNCTION: build_line")
         if (self.delta_x!=0):
             self.to_x = self.g_loc[0]+self.delta_x*self.blocks_x
@@ -82,8 +83,7 @@ class Builder(BlockFinder):
             self.to_z = self.g_loc[2]+self.delta_z*self.blocks_z
         self.mc.setBlocks(self.g_loc[0],self.g_loc[1],self.g_loc[2],self.to_x,self.to_y,self.to_z,self.material_1)
 
-    def build_plane(self, index): #??? Uses mc instance.
-        #TODO indentify why 'index' is an argument, it is unused.
+    def build_plane(self): #??? Uses mc instance.
         print ("\nFUNCTION: build_plane")
         if (self.delta_x!=0) and (self.delta_y!=0):
             self.to_x = self.g_loc[0]+self.delta_x*self.blocks_x
@@ -96,8 +96,7 @@ class Builder(BlockFinder):
             self.to_z = self.g_loc[2]+self.delta_z*self.blocks_z
         self.mc.setBlocks(self.g_loc[0],self.g_loc[1],self.g_loc[2],self.to_x,self.to_y,self.to_z,self.material_1)
 
-    def build_hollow_cube(self, index): #??? Uses mc instance.
-        #TODO indentify why 'index' is an argument, it is unused.
+    def build_hollow_cube(self): #??? Uses mc instance.
         print ("\nFUNCTION: build_hollow_cube")
         self.to_x = self.g_loc[0]+self.delta_x*self.blocks_x
         self.to_y = self.g_loc[1]+self.delta_y*self.blocks_y
@@ -114,8 +113,7 @@ class Builder(BlockFinder):
         # make a ceiling
         self.mc.setBlocks(self.g_loc[0],self.to_y,self.g_loc[2],self.to_x,self.to_y,self.to_z,self.material_6)
 
-    def define_demo_map3d(self, index):
-        #TODO indentify why 'index' is an argument, it is unused.
+    def define_demo_map3d(self):
         print ("\nFUNCTION: define_demo_map3d")
         self.map3d=[]
 
@@ -175,7 +173,7 @@ class Builder(BlockFinder):
         self.map3d[6].append([2,1,2,1,2])
         self.map3d[6].append([1,2,1,2,1])
 
-    def define_demo_map2d(self, index):
+    def define_demo_map2d(self):
         #TODO indentify why 'index' is an argument, it is unused.
         print ("\nFUNCTION: define_demo_map2d")
         self.map2d=[]
@@ -185,20 +183,18 @@ class Builder(BlockFinder):
         self.map2d.append([2,1,2,1,2])
         self.map2d.append([1,2,1,2,1])
 
-    def define_demo_map1d(self, index):
+    def define_demo_map1d(self):
         #TODO indentify why 'index' is an argument, it is unused.
         print ("\nFUNCTION: define_demo_map1d")
         # WORKING
         self.map1d=[]
         self.map1d.append([1,2,3,4,5,4,3,2,1])
 
-    def build_map1d(self, index):
-        #TODO indentify why 'index' is an argument, it is unused.
+    def build_map1d(self):
         print ("\nFUNCTION: build_map1d")
         # WORKING
 
-    def build_map2d(self, index): #??? Uses mc instance.
-        #TODO indentify why 'index' is an argument, it is unused.
+    def build_map2d(self): #??? Uses mc instance.
         print ("\nFUNCTION: build_map2d")
         # WORKING: THIS CODE HAS NOT BEEN UPDATED!
         if (self.delta_x!=0) and (self.delta_y!=0):
@@ -224,8 +220,7 @@ class Builder(BlockFinder):
                     block_z=self.g_loc[2]+self.delta_z*z
                     self.mc.setBlock(block_x,block_y,block_z,self.map2d[y][z])
 
-    def build_map3d(self,index): #??? Uses mc instance.
-        #TODO indentify why 'index' is an argument, it is unused.
+    def build_map3d(self): #??? Uses mc instance.
         print ("\nFUNCTION: build_map3d")
         # WORKING: THIS CODE HAS NOT BEEN UPDATED
         for x in range(0,len(self.map3d)):
@@ -239,4 +234,17 @@ class Builder(BlockFinder):
 
     def reset (self, BlockFinder):
         #TODO reset members for new build.
+        print ("\nFUNCTION: reset")
+
 #End of builder class.
+
+#mine = Builder()
+# find_gold defines most corner variables
+# this
+# find_gold() defines a corner
+#mine.find_gold()
+# builder(0) constructs a structure at first defined corner
+#mine.builder(0)
+# find blocks with block_id 3 (dirt) in first corner (0 index)
+#dirt_blocks = mine.find_blocks(0,3) # search the first corner blocks for dirt
+#print ("dirtblocks " + str(len(dirt_blocks)))

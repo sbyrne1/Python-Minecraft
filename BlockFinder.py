@@ -1,4 +1,4 @@
-import MinecraftGenerator
+from MinecraftGenerator import *
 
 MINIMUM_BRICKS_TO_WORK = 1
 SEARCH_RADIUS = 2
@@ -35,7 +35,7 @@ class BlockFinder(MinecraftGenerator):
         delta_x = 0
         delta_y = 0
         delta_z = 0
-        mode = "default"
+        mode = "default" # MOVE TO BUILDER
         dict_corner = {'loc':loc,
                        'scan_coords':scan_coords,
                        'scan_blocks':scan_blocks,
@@ -169,5 +169,6 @@ class BlockFinder(MinecraftGenerator):
 
     def reset(self,MinecraftGenerator):
         #TODO reset members for new build.
+        print ("\nFUNCTION: reset")
 
 #End of BlockFinder class.

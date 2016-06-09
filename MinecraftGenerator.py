@@ -49,6 +49,7 @@ class MinecraftGenerator:
 
     def reset(self):
         #TODO reset required members for new building.
+        print ("\nFUNCTION: reset")
 
 #End of MinecraftGenerator Class.
 
