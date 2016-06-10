@@ -26,3 +26,7 @@ class make_cube_of_tnt():
     def find_gold_corner(self):
 
         return x, y, z
+
+    def replace_Gold_with_TNT(self):
+        #if tnt_block_pos != 0,0,0 replace.
+        #otherwise display message, "corner not found!"
