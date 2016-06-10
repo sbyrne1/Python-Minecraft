@@ -1,8 +1,7 @@
 from MinecraftGenerator import *
-
+from Blocks_List import *
 MINIMUM_BRICKS_TO_WORK = 1
 SEARCH_RADIUS = 2
-
 """
     BlockFinder:
         Derived from MinecraftGenerator.
@@ -22,8 +21,8 @@ class BlockFinder(MinecraftGenerator):
 
         self.corners = []
         self.set_radius(SEARCH_RADIUS)
-        self.gold=41
-        self.iron=42
+        self.gold=GOLD_BLOCK
+        self.iron=IRON_BLOCK
         #TODO indentify class attributes.
 
     def new_corner(self):

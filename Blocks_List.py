@@ -1,0 +1,4 @@
+  IRON_BLOCK = 42
+  GOLD_BLOCK = 41
+  TNT_BLOCK = 47
+  
