@@ -1,6 +1,7 @@
 # Author: Stephen Byrne
 # Date: 5-29-2016
 from mcpi.minecraft import Minecraft
+import sys
 #TODO figure out what class needs this import. -Bill
 
 
@@ -24,8 +25,13 @@ class MinecraftGenerator:
     def __init__(self): #??? Uses mc instance.
         # create minecraft object
         print ("\nFUNCTION: MinecraftGenerator __init__")
-        print ("Open connection to Minecraft Pi")
-        self.mc=Minecraft.create()
+        print ("Opening connection to Minecraft Pi")
+        try:
+            self.mc=Minecraft.create()
+        except:
+            #print("There was an error connecting to Minecraft.")
+            sys.exit("There was an error connecting to Minecraft.")
+
 
         #TODO indentify class attributes, and initialize them in the constructor. -Bill
 

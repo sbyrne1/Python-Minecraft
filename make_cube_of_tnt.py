@@ -25,7 +25,7 @@ class make_cube_of_tnt:
         tnt_block_pos = {0,0,0} #x,y,z of brick;
 
     def find_gold_corner(self):
-
+        #TODO: implement code.
         return x, y, z
 
     def replace_Gold_with_TNT(self):
