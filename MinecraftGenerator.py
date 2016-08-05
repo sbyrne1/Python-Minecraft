@@ -48,13 +48,13 @@ class MinecraftGenerator:
         self.pz=int(self.pz)
 
     def get_position(self):
-        print ("\nFUNCTION: get_position")
-
+        #print ("\nFUNCTION: get_position")
         # returns players [x,y,z] coordinates
         return [self.px,self.py,self.pz]
 
     def reset(self):
         #TODO reset required members for new building.
+        #TODO implement this code
         print ("\nFUNCTION: reset")
 
 #End of MinecraftGenerator Class.

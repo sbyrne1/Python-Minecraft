@@ -22,11 +22,20 @@ mc.setBlocks(px,py-1,pz,px+1,py-1000,pz+1,tnt,1)
 class make_cube_of_tnt:
     def __init__(self):
         px,py,pz=mx.player.getPos()
-        tnt_block_pos = {0,0,0} #x,y,z of brick;
+        tnt_block_pos = {0,0,0} #x,y,z of brick.
+        gold_block_poas = {0,0,0} #xyz of brick.
 
     def find_gold_corner(self):
         #TODO: implement code.
         return x, y, z
+
+    def set_tnt_block_pos(self):
+        #TODO implement
+        #NOTE no return value.
+
+    def get_tnt_block_pos(self):
+        #TODO implement
+        #Return x, y, and z
 
     def replace_Gold_with_TNT(self):
         #if tnt_block_pos != 0,0,0 replace.
